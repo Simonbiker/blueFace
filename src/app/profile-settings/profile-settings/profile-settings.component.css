@@ -1,0 +1,8 @@
+.container {
+  display: grid;
+}
+
+.item {
+  grid-column: auto;
+  padding-bottom: 10px;
+}
