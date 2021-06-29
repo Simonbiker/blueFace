@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 export interface IProfile {
   firstName: string;
-  lasName: string;
+  lastName: string;
   username: string;
   age: number;
 }
@@ -21,7 +21,7 @@ export class ProfileService {
         if (Math.round(Math.random())) {
           this.user = {
             firstName: 'Michael',
-            lasName: 'Collins',
+            lastName: 'Collins',
             username: 'michael.collins',
             age: 30
           };
@@ -33,6 +33,7 @@ export class ProfileService {
     });
   }
 
+  
 
   setName(firstName: string) {
     return new Promise((resolve, reject) => {
