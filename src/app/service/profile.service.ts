@@ -5,6 +5,7 @@ export interface IProfile {
   lastName: string;
   username: string;
   age: number;
+  email: string;
 }
 
 @Injectable({
@@ -23,7 +24,8 @@ export class ProfileService {
             firstName: 'Michael',
             lastName: 'Collins',
             username: 'michael.collins',
-            age: 30
+            age: 30,
+            email: 'michael.collins@blueface.com'
           };
           resolve(this.user)
         } else {
@@ -33,9 +35,7 @@ export class ProfileService {
     });
   }
 
-  
-
-  setName(firstName: string) {
+  setName(firstName: string): Promise<IProfile> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (Math.round(Math.random())) {
@@ -48,4 +48,7 @@ export class ProfileService {
     })
   }
 
+  //todo add new method for email set.
+  // trim to remove empty string
+  // use block scope for firstname and lastname.
 }
