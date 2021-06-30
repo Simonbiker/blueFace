@@ -3,45 +3,32 @@
     <h1>{{ title }}</h1>
   </div>
   <div>
-    <!-- flexx coloum -->
     <p>Username: {{ user.username }}</p>
+    <p>Email: {{user.email}}</p>
     <div class="item">
       <label>First Name:</label>
-      <!-- todo need to have intput as empty -->
-      <input
-        [(ngModel)]="user.firstName"
-        type="text"
-        id="newName"
-        name="newName"
-        [disabled]="dataloading"
-      />
+      <input [(ngModel)]="user.firstName" type="text" id="newName" name="newName" [disabled]="dataloading"
+        (ngModelChange)="clearErrors()" />
     </div>
     <div class="item">
       <label>Second Name:</label>
-      <!-- todo need to have intput as empty -->
-      <input
-        [(ngModel)]="user.lastName"
-        type="text"
-        id="newLastName"
-        name="newLastName"
-        [disabled]="dataloading"
-      />
+      <input [(ngModel)]="user.lastName" type="text" id="newLastName" name="newLastName" [disabled]="dataloading"
+        (ngModelChange)="clearErrors()" />
     </div>
-
-    <!-- email input plus validation -->
-    <!-- email needs to be a combination of first and last name -->
     <button type="button" (click)="saveProfile(user)" [disabled]="dataloading">
       Save
     </button>
   </div>
 
-  <div *ngIf="dataloading && !dataError">
+  <div *ngIf="dataloading">
     <p>Loading profile...</p>
   </div>
-  <div *ngIf="savingProfile && !dataError">
+  <div *ngIf="savingProfile">
     <p>Saving profile...</p>
   </div>
-  <!-- todo add error message for loading -->
+  <div *ngIf="dataErrorMessage && dataErrorMessage.length > 0">
+    <p>{{dataErrorMessage}}</p>
+  </div>
   <div *ngIf="savingErrorMessage && savingErrorMessage.length > 0">
     <p>{{ savingErrorMessage }}</p>
   </div>
