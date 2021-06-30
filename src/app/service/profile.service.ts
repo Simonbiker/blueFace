@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 
 export interface IProfile {
@@ -48,7 +49,20 @@ export class ProfileService {
     })
   }
 
-  //todo add new method for email set.
-  // trim to remove empty string
-  // use block scope for firstname and lastname.
+  setUserEmail(firstName: string, lastName: string): Promise<IProfile> {
+    const bluefaceEmail = '@blueface.com';
+    const firstNameEmail = firstName.replace(/ /g,''); // using replace to remove any spaces for double parrel names
+    const lastNameEmail = lastName.replace(/ /g, '');
+    const email = firstNameEmail + lastNameEmail + bluefaceEmail
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (Math.round(Math.random())) {
+          this.user.email = email;
+          resolve(this.user);
+        } else {
+          reject({ error: 'Error on email generation' });
+        }
+      }, Math.random() * 5000);
+    })
+  }
 }
