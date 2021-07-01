@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 
 export interface IProfile {
